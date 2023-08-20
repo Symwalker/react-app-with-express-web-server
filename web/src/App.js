@@ -1,11 +1,15 @@
 import React,{ useState } from 'react'
 import axios from "axios"
+let baseUrl = ''
+if(window.location.href === "http"){
+  baseUrl = "http://localhost:5001/"
+}
 function App() {
   const [weatherData, setWeather] = useState(null)
   const [cityName, setCityName] = useState('')
   const weahther =() =>{
     axios
-    .get(`http://localhost:5001/weather`)
+    .get(`${baseUrl}weather`)
     .then((res)=>{
         setWeather(res.data)
         console.log(res.data);
